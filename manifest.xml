@@ -1,89 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xsi:type="TaskPaneApp" 
-           xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
-           xmlns:ov="http://schemas.microsoft.com/office/taskpanesapp/versionoverrides">
+           xmlns:bt="http://schemas.microsoft.com/office/appforoffice/1.1/basictypes" 
+           xmlns:ov="http://schemas.microsoft.com/office/appforoffice/1.0/versionOverrides" 
+           xsi:type="TaskPaneApp">
   
-  <Id>b2a1c4d5-8e9f-4123-b456-7890abcdef12</Id>
+  <Id>b2a82910-4811-49b8-9363-22100a120011</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Your Name</ProviderName>
+  <ProviderName>213tau</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="SVG Clipboard Injector"/>
-  <Description DefaultValue="Paste SVG code directly from clipboard as vector shapes into PowerPoint."/>
+  <DisplayName DefaultValue="SVG Vector Injector"/>
+  <Description DefaultValue="Paste and inject raw SVG vector shapes into PowerPoint slides."/>
   
-  <IconUrl DefaultValue="https://your-project.vercel.app/icon-32.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
-  
-  <AppDomains>
-    <AppDomain>https://powerpoint-svg-add-in.vercel.app/</AppDomain>
-  </AppDomains>
+  <Icon DefaultValue="https://powerpoint-svg-add-in.vercel.app/icon-32.png"/>
+  <SupportUrl DefaultValue="https://github.com/213tau/powerpoint-svg-add-in"/>
   
   <Hosts>
     <Host Name="Presentation"/>
   </Hosts>
   
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://powerpoint-svg-add-in.vercel.app/index.html"/>
+    <SourceLocation DefaultValue="https://powerpoint-svg-add-in.vercel.app/"/>
   </DefaultSettings>
   
   <Permissions>ReadWriteDocument</Permissions>
 
-  <!-- Ribbon UI Customization -->
-  <ov:VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpanesapp/versionoverrides" xsi:type="VersionOverridesV1_0">
-    <ov:Hosts>
-      <ov:Host xsi:type="Presentation">
-        <ov:DesktopFormFactor>
-          <ov:ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <ov:CustomTab id="SvgInjector.CustomTab">
-              <ov:Label resid="SvgInjector.Tab.Label"/>
-              <!-- Places the custom tab right after the native Design tab -->
-              <ov:InsertAfter>TabDesign</ov:InsertAfter>
-              
-              <ov:Group id="SvgInjector.Group1">
-                <ov:Label resid="SvgInjector.Group1.Label"/>
-                
-                <ov:Control xsi:type="Button" id="SvgInjector.TaskPaneButton">
-                  <ov:Label resid="SvgInjector.Button.Label"/>
-                  <ov:Supertip>
-                    <ov:Title resid="SvgInjector.Button.Label"/>
-                    <ov:Description resid="SvgInjector.Button.Tooltip"/>
-                  </ov:Supertip>
-                  <ov:Icon>
-                    <bt:Image size="16" resid="SvgInjector.Icon.16"/>
-                    <bt:Image size="32" resid="SvgInjector.Icon.32"/>
-                    <bt:Image size="80" resid="SvgInjector.Icon.80"/>
-                  </ov:Icon>
-                  <ov:Action xsi:type="ShowTaskpane">
-                    <ov:TaskpaneId>ButtonId1</ov:TaskpaneId>
-                    <ov:SourceLocation resid="SvgInjector.Taskpane.Url"/>
-                  </ov:Action>
-                </ov:Control>
-
-              </ov:Group>
-            </ov:CustomTab>
-          </ov:ExtensionPoint>
-        </ov:DesktopFormFactor>
-      </ov:Host>
-    </ov:Hosts>
-
-    <ov:Resources>
+  <!-- Desktop Ribbon & UI Overrides -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpanearapp/v1.0" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="SvgInjectorTab">
+              <Label resid="TabLabel"/>
+              <Group id="SvgInjectorGroup">
+                <Label resid="GroupLabel"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon16"/>
+                  <bt:Image size="32" resid="Icon32"/>
+                  <bt:Image size="80" resid="Icon80"/>
+                </Icon>
+                <Control xsi:type="Button" id="OpenTaskpaneButton">
+                  <Label resid="ButtonLabel"/>
+                  <Supertip>
+                    <Title resid="ButtonTitle"/>
+                    <Description resid="ButtonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon16"/>
+                    <bt:Image size="32" resid="Icon32"/>
+                    <bt:Image size="80" resid="Icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>SvgInjectorTaskPane</TaskpaneId>
+                    <SourceLocation DefaultValue="https://powerpoint-svg-add-in.vercel.app/"/>
+                  </Action>
+                </Control>
+              </Group>
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    
+    <Resources>
       <bt:Images>
-        <bt:Image id="SvgInjector.Icon.16" DefaultValue="https://your-project.vercel.app/icon-16.png"/>
-        <bt:Image id="SvgInjector.Icon.32" DefaultValue="https://your-project.vercel.app/icon-32.png"/>
-        <bt:Image id="SvgInjector.Icon.80" DefaultValue="https://your-project.vercel.app/icon-80.png"/>
+        <bt:Image id="Icon16" DefaultValue="https://powerpoint-svg-add-in.vercel.app/icon-16.png"/>
+        <bt:Image id="Icon32" DefaultValue="https://powerpoint-svg-add-in.vercel.app/icon-32.png"/>
+        <bt:Image id="Icon80" DefaultValue="https://powerpoint-svg-add-in.vercel.app/icon-80.png"/>
       </bt:Images>
-      <bt:Urls>
-        <bt:Url id="SvgInjector.Taskpane.Url" DefaultValue="https://your-project.vercel.app/index.html"/>
-      </bt:Urls>
-      <bt:ShortStrings>
-        <bt:String id="SvgInjector.Tab.Label" Value="SVG Tools"/>
-        <bt:String id="SvgInjector.Group1.Label" Value="Vector Actions"/>
-        <bt:String id="SvgInjector.Button.Label" Value="Open Injector"/>
-      </bt:ShortStrings>
-      <bt:LongStrings>
-        <bt:String id="SvgInjector.Button.Tooltip" Value="Open task pane to paste SVG from clipboard."/>
-      </bt:LongStrings>
-    </ov:Resources>
-  </ov:VersionOverrides>
+      <bt:Strings>
+        <bt:String id="TabLabel" DefaultValue="Vector Tools"/>
+        <bt:String id="GroupLabel" DefaultValue="SVG"/>
+        <bt:String id="ButtonLabel" DefaultValue="Open SVG Injector"/>
+        <bt:String id="ButtonTitle" DefaultValue="SVG Vector Injector"/>
+        <bt:String id="ButtonDesc" DefaultValue="Open panel to inject raw SVG vectors into slides."/>
+      </bt:Strings>
+    </Resources>
+  </VersionOverrides>
 </OfficeApp>
