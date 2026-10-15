@@ -16,7 +16,7 @@
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   
   <AppDomains>
-    <AppDomain>https://your-project.vercel.app</AppDomain>
+    <AppDomain>https://powerpoint-svg-add-in.vercel.app/</AppDomain>
   </AppDomains>
   
   <Hosts>
