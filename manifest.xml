@@ -24,7 +24,7 @@
   </Hosts>
   
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://powerpoint-svg-add-in.vercel.app//index.html"/>
+    <SourceLocation DefaultValue="https://powerpoint-svg-add-in.vercel.app/index.html"/>
   </DefaultSettings>
   
   <Permissions>ReadWriteDocument</Permissions>
@@ -36,6 +36,10 @@
         <ov:DesktopFormFactor>
           <ov:ExtensionPoint xsi:type="PrimaryCommandSurface">
             <ov:CustomTab id="SvgInjector.CustomTab">
+              <ov:Label resid="SvgInjector.Tab.Label"/>
+              <!-- Places the custom tab right after the native Design tab -->
+              <ov:InsertAfter>TabDesign</ov:InsertAfter>
+              
               <ov:Group id="SvgInjector.Group1">
                 <ov:Label resid="SvgInjector.Group1.Label"/>
                 
@@ -57,7 +61,6 @@
                 </ov:Control>
 
               </ov:Group>
-              <ov:Label resid="SvgInjector.Tab.Label"/>
             </ov:CustomTab>
           </ov:ExtensionPoint>
         </ov:DesktopFormFactor>
