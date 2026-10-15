@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xsi:type="TaskPaneApp" 
+           xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+           xmlns:ov="http://schemas.microsoft.com/office/taskpanesapp/versionoverrides">
+  
+  <Id>b2a1c4d5-8e9f-4123-b456-7890abcdef12</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Your Name</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="SVG Clipboard Injector"/>
+  <Description DefaultValue="Paste SVG code directly from clipboard as vector shapes into PowerPoint."/>
+  
+  <IconUrl DefaultValue="https://your-project.vercel.app/icon-32.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  
+  <AppDomains>
+    <AppDomain>https://your-project.vercel.app</AppDomain>
+  </AppDomains>
+  
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>
+  
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://your-project.vercel.app/index.html"/>
+  </DefaultSettings>
+  
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <!-- Ribbon UI Customization -->
+  <ov:VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpanesapp/versionoverrides" xsi:type="VersionOverridesV1_0">
+    <ov:Hosts>
+      <ov:Host xsi:type="Presentation">
+        <ov:DesktopFormFactor>
+          <ov:ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <ov:CustomTab id="SvgInjector.CustomTab">
+              <ov:Group id="SvgInjector.Group1">
+                <ov:Label resid="SvgInjector.Group1.Label"/>
+                
+                <ov:Control xsi:type="Button" id="SvgInjector.TaskPaneButton">
+                  <ov:Label resid="SvgInjector.Button.Label"/>
+                  <ov:Supertip>
+                    <ov:Title resid="SvgInjector.Button.Label"/>
+                    <ov:Description resid="SvgInjector.Button.Tooltip"/>
+                  </ov:Supertip>
+                  <ov:Icon>
+                    <bt:Image size="16" resid="SvgInjector.Icon.16"/>
+                    <bt:Image size="32" resid="SvgInjector.Icon.32"/>
+                    <bt:Image size="80" resid="SvgInjector.Icon.80"/>
+                  </ov:Icon>
+                  <ov:Action xsi:type="ShowTaskpane">
+                    <ov:TaskpaneId>ButtonId1</ov:TaskpaneId>
+                    <ov:SourceLocation resid="SvgInjector.Taskpane.Url"/>
+                  </ov:Action>
+                </ov:Control>
+
+              </ov:Group>
+              <ov:Label resid="SvgInjector.Tab.Label"/>
+            </ov:CustomTab>
+          </ov:ExtensionPoint>
+        </ov:DesktopFormFactor>
+      </ov:Host>
+    </ov:Hosts>
+
+    <ov:Resources>
+      <bt:Images>
+        <bt:Image id="SvgInjector.Icon.16" DefaultValue="https://your-project.vercel.app/icon-16.png"/>
+        <bt:Image id="SvgInjector.Icon.32" DefaultValue="https://your-project.vercel.app/icon-32.png"/>
+        <bt:Image id="SvgInjector.Icon.80" DefaultValue="https://your-project.vercel.app/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="SvgInjector.Taskpane.Url" DefaultValue="https://your-project.vercel.app/index.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="SvgInjector.Tab.Label" Value="SVG Tools"/>
+        <bt:String id="SvgInjector.Group1.Label" Value="Vector Actions"/>
+        <bt:String id="SvgInjector.Button.Label" Value="Open Injector"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="SvgInjector.Button.Tooltip" Value="Open task pane to paste SVG from clipboard."/>
+      </bt:LongStrings>
+    </ov:Resources>
+  </ov:VersionOverrides>
+</OfficeApp>
